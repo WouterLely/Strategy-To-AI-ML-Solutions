@@ -16,7 +16,7 @@ The total number of possible combinations of spells, potions, and incantations?
 **70,662,844,000,000,000** or better said: seventy-trillion-six-hundred-ixty-two-billion-eight-hundred-forty-four-million
 — a number so large, even the wisest people blinked twice.
 
-After a careful examination by the **Cloud Cost Champion Experts**, it was revealed that there could potentially avoid or saved **€12.5 million within the next five years**.
+After a careful examination by the **Cloud Cost Champion Experts**, it was revealed that there could potentially avoid or saved **a minimum of €12.5 million within the next five years**.
 
 ---
 
