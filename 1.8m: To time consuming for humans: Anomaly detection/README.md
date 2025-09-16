@@ -46,7 +46,7 @@ Result: no full-scale governance bureaucracy needed. **Impact achieved, magic pr
 
 ### 💰 The Treasure
 
-85–90% of €12.5M = **€1.25–1.8 million** left to discover.  
+85–90% done of €12.5M = **€1.25–1.8 million** left to discover.
 The challenge was to save money — and that worked. 💫  
 
 So do we stop and celebrate success, or spend some time to find the last €1.25–1.8 million?  
