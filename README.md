@@ -19,7 +19,7 @@ AI/ML isn’t about building models for the sake of models. It’s about:
 🚫 What this is not
 - ❌ A coding showcase
 - ❌ Production-ready solutions
-- ❌ Company IP
+- ❌ Company Intellectual Property
 
 This repo focuses on storytelling & strategy-to-solution & simplicity thinking, not raw code. The examples are real in essence, but code snippets (if any) are illustrative only.
 
