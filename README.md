@@ -1,12 +1,13 @@
 ## 🪄 Strategy-To-AI-ML-Data-Solutions (under construction)
-Simplicity: Strategy to tech solutions
-From powerpoint → to tangible AI/ML impact
+Simplicity: Strategy → tech solutions
+
+Simplicity: From PowerPoint → to tangible AI/ML impact
 
 Complexity isn’t the enemy — unmanaged complexity is. This repository is my spellbook of transformations: how strategy is distilled into practical AI/ML solutions that deliver measurable value.
 Here, you won’t find corporate IP or production code. Instead, you’ll discover real stories, patterns, and use cases that show how AI/ML can be woven into business strategy — turning the invisible into the actionable.
 
 ✨ What you’ll find here
-- In research: 🪄 LLM Alchemy → How MCP server & LLM's models transform strategic intent into tangible outcomes.
+- To be researched: 🪄 LLM Alchemy → How MCP server & LLM's models transform strategic intent into tangible outcomes.
 - 🔮 Predictive Magic → Case examples where ML reveals hidden patterns, guiding simple and strategic actions.
 - ⚡ Applied Simplicity → Frameworks and approaches that break down complexity into solutions teams can actually adopt.
 
