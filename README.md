@@ -33,3 +33,5 @@ This repo focuses on storytelling & strategy-to-solution & simplicity thinking, 
 - Explore the use case stories.
 - Steal the frameworks (the magic is free ✨).
 - Adapt them to your own transformations.
+
+*The storys are real. The numbers approximate reality. The code and visualizations are dummy and simplified.*
