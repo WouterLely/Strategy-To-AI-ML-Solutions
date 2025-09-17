@@ -67,9 +67,33 @@ def detect_anomalies_holtwinters(df: pd.DataFrame) -> pd.DataFrame:
                 trend='add',
                 initialization_method="estimated"
             ).fit()
-
+            
             fitted = model.fittedvalues
             resid = series - fitted
+
+            """"
+            --- Standard deviation rule (default) ---
+            Good when data is roughly normal. Raise σ to reduce false positives.
+            threshold = sigma * resid.std()
+            return np.abs(resid) > threshold
+
+            --- Median Absolute Deviation ---
+            Use when residuals contain large spikes (outliers).
+            MAD is more stable because a single big anomaly won't inflate it.
+            median = np.median(resid)
+            mad = np.median(np.abs(resid - median))
+            threshold = sigma * mad
+            return np.abs(resid - median) > threshold
+
+            --- Quantile thresholds ---
+            Use when data is skewed (not symmetric) or heavy-tailed.
+            Consider when this is used that even quartile outliers need to be detected!
+            Flags values outside the (1 - quantile, quantile) range.
+            lower, upper = np.quantile(resid, [1-quantile, quantile])
+            return (resid < lower) | (resid > upper)
+            
+            Different anomaly methods could be used for different cases, simple right? 
+            """
 
             threshold = 2 * resid.std()
             anomaly_score = resid / threshold
