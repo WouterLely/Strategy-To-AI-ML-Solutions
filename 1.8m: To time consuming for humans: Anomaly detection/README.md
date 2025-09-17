@@ -73,4 +73,4 @@ This repository is the spellbook: **stories, frameworks, and magic** showing how
 
 ---
 
-*This story is real. The numbers approximate reality. The code and visualizations are simplified.*
+*This story is real. The numbers approximate reality. The code and visualizations are dummy and simplified.*
