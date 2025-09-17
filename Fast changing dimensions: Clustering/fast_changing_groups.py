@@ -137,9 +137,9 @@ def main():
     summary_table["given_cluster_name"] = summary_table["cluster_usage_pattern"].map(CLUSTER_NAME_MAPPING)
 
     summary_csv = os.path.join(out_dir, "cluster_summary_full.csv")
-    summary_table.to_csv(summary_csv, index=False, float_format="%.2f")
+    summary_table.to_csv(summary_csv, index=False, float_format="%.2f")  # ✅ no row numbers in CSV
     print("\nSaved cluster summary CSV to:", summary_csv)
-    print(summary_table)
+    print(summary_table.to_string(index=False))  # ✅ no row numbers when printing
 
     # --- Top 3 products per cluster normalized ---
     top_products_summary = []
@@ -158,9 +158,9 @@ def main():
 
     top_products_df = pd.DataFrame(top_products_summary)
     top_products_csv = os.path.join(out_dir, "top3_products_per_cluster.csv")
-    top_products_df.to_csv(top_products_csv, index=False, float_format="%.2f")
+    top_products_df.to_csv(top_products_csv, index=False, float_format="%.2f")  # ✅ no row numbers in CSV
     print("\nSaved Top 3 products per cluster (normalized) CSV to:", top_products_csv)
-    print(top_products_df)
+    print(top_products_df.to_string(index=False))  # ✅ no row numbers when printing
 
     # --- Silhouette plots ---
     analyzer.silhouette_analysis(X_cost, range(2, 10), "Silhouette Analysis - Total Cost")
