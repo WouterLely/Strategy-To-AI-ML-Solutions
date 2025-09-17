@@ -40,7 +40,8 @@ For these 9 enchanted services, we conjured:
 - Strategic enchantments & organizational spells
 - Documentation to provide answers and tech-solutions
 - Governance and evaluation
-- A dashboard monitoring ritual that took **just 5 minutes per week**
+- Slightly moving to minimize time ([cooperation](https://now-to-new.com/tell-sell-test-consult-co-create-model/)
+- A dashboard monitoring ritual that took **just 5 minutes per week with answers**
 
 Result: no full-scale governance bureaucracy needed. **Impact achieved, magic proven.** 👏
 
