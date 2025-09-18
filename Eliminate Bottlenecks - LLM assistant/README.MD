@@ -1,1 +1,2 @@
-
+a swowcase how LLM's could support strategic business goals
+working app, subscription is coming soon...
