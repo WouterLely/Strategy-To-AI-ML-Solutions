@@ -1,4 +1,4 @@
-## 🪄 Strategy-To-AI-ML-Data-Solutions (under construction)
+## 🪄 Strategy-To-AI-ML-Data-Solutions
 Simplicity: Strategy → tech solutions
 
 Simplicity: From PowerPoint → to tangible AI/ML impact
