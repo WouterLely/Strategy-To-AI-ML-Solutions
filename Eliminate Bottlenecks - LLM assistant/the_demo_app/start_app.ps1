@@ -26,6 +26,7 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
+<<<<<<< HEAD
 # OpenAI Configuration Setup
 Write-Host "🤖 Checking OpenAI Configuration..." -ForegroundColor Cyan
 
@@ -133,6 +134,31 @@ OPENAI_MODEL=$model
 # This file is auto-generated. To update credentials, delete .venv\openai_config.txt and restart.
 "@ | Out-File -FilePath $envFile -Encoding UTF8
 
+=======
+# Check if .env file exists, create template if it doesn't
+if (!(Test-Path ".env")) {
+    Write-Host "🔧 Creating .env template..." -ForegroundColor Yellow
+    @"
+# OpenAI Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-3.5-turbo
+
+# Instructions:
+# 1. Get your API key from: https://platform.openai.com/api-keys
+# 2. Replace 'your_openai_api_key_here' with your actual API key
+# 3. Save this file and restart the application
+"@ | Out-File -FilePath ".env" -Encoding UTF8
+    Write-Host "✅ .env template created!" -ForegroundColor Green
+    Write-Host "📝 Please edit .env file and add your OpenAI API key" -ForegroundColor Yellow
+    Write-Host "🔗 Get your API key from: https://platform.openai.com/api-keys" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "Press any key to continue after adding your API key..." -ForegroundColor Magenta
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+} else {
+    Write-Host "✅ .env file already exists" -ForegroundColor Green
+}
+
+>>>>>>> 90fd3198baf6326b2fee62bdd5459fd732dfde2c
 # Check if database exists, create if it doesn't
 if (!(Test-Path "data\database\company.db")) {
     Write-Host "🔧 Creating database..." -ForegroundColor Yellow

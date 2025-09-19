@@ -9,6 +9,7 @@ from llama_index.core.embeddings import BaseEmbedding
 from dotenv import load_dotenv
 
 # Load environment variables
+<<<<<<< HEAD
 import os
 # Try multiple paths to find .env file
 env_paths = [
@@ -21,6 +22,9 @@ for env_path in env_paths:
     if os.path.exists(env_path):
         load_dotenv(env_path)
         break
+=======
+load_dotenv()
+>>>>>>> 90fd3198baf6326b2fee62bdd5459fd732dfde2c
 
 # Try to import OpenAI components
 try:
@@ -58,6 +62,7 @@ class SimpleEmbedding(BaseEmbedding):
 
 def initialize_settings():
     """Initialize LlamaIndex settings"""
+<<<<<<< HEAD
     # Force reload environment variables from multiple possible locations
     current_dir = os.getcwd()
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -103,6 +108,28 @@ def initialize_settings():
         Settings.llm = MockLLM()
         Settings.embed_model = SimpleEmbedding()
         return False, f"MockLLM ({reason})"
+=======
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    
+    if OPENAI_AVAILABLE and openai_api_key:
+        try:
+            # Test OpenAI API key with a simple request
+            model = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+            Settings.llm = OpenAI(model=model, api_key=openai_api_key)
+            Settings.embed_model = OpenAIEmbedding(api_key=openai_api_key)
+            return True, "OpenAI"
+        except Exception as e:
+            # If OpenAI fails (quota exceeded, invalid key, etc.), fall back to mock
+            print(f"OpenAI initialization failed: {e}")
+            Settings.llm = MockLLM()
+            Settings.embed_model = SimpleEmbedding()
+            return False, "MockLLM (OpenAI quota exceeded)"
+    else:
+        # Fall back to mock models
+        Settings.llm = MockLLM()
+        Settings.embed_model = SimpleEmbedding()
+        return False, "MockLLM"
+>>>>>>> 90fd3198baf6326b2fee62bdd5459fd732dfde2c
 
 
 def initialize_data_sources():
@@ -337,6 +364,7 @@ def main() -> None:
     }
     
     .service-category {
+<<<<<<< HEAD
         background: rgba(255, 70, 45, 0.05);
         padding: 1rem;
         border-radius: 12px;
@@ -356,6 +384,26 @@ def main() -> None:
     
     .service-category strong {
         color: #ff462d;
+=======
+        background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+        padding: 1rem;
+        border-radius: 12px;
+        margin: 0.5rem 0;
+        border: 2px solid rgba(255, 70, 45, 0.1);
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .service-category:hover {
+        border-color: var(--primary-red);
+        background: linear-gradient(135deg, var(--white) 0%, #FFF8F6 100%);
+        transform: translateX(5px);
+        box-shadow: 0 4px 16px rgba(255, 70, 45, 0.1);
+    }
+    
+    .service-category strong {
+        color: var(--primary-red);
+>>>>>>> 90fd3198baf6326b2fee62bdd5459fd732dfde2c
         font-size: 1.1rem;
     }
     
@@ -445,6 +493,7 @@ def main() -> None:
     """, unsafe_allow_html=True)
     
     # Initialize settings and data sources
+<<<<<<< HEAD
     # Always check LLM configuration to ensure it's up to date
     is_openai, llm_type = initialize_settings()
     st.session_state.is_openai = is_openai
@@ -474,6 +523,19 @@ def main() -> None:
             st.session_state.is_openai = is_openai
             st.session_state.llm_type = llm_type
             st.rerun()
+=======
+    if "llm_configured" not in st.session_state:
+        is_openai, llm_type = initialize_settings()
+        st.session_state.llm_configured = True
+        st.session_state.is_openai = is_openai
+        st.session_state.llm_type = llm_type
+    
+    # Display LLM status
+    if st.session_state.is_openai:
+        st.success("🤖 Using OpenAI GPT for intelligent responses")
+    else:
+        st.info("🔧 Using MockLLM - Add OpenAI API key for enhanced responses")
+>>>>>>> 90fd3198baf6326b2fee62bdd5459fd732dfde2c
     
     if 'initialized' not in st.session_state:
         with st.spinner("Loading data sources..."):
