@@ -16,7 +16,6 @@ A modern enterprise data intelligence platform that demonstrates AI-powered docu
 - **🎨 Corporate Design**: Professional UI with modern styling and custom branding
 - **🔄 Automated Setup**: One-command startup scripts for Windows PowerShell
 - **🐳 Docker Ready**: Containerized deployment support
-- **🛡️ Production Ready**: Error handling, quota management, and resilient architecture
 - **📱 Responsive UI**: Modern, accessible interface built with Streamlit
 
 ## 🏗️ Technical Architecture
