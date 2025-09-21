@@ -9,7 +9,18 @@ from llama_index.core.embeddings import BaseEmbedding
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv()
+import os
+# Try multiple paths to find .env file
+env_paths = [
+    '.env',  # Current directory
+    '../.env',  # Parent directory
+    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env')  # Project root
+]
+
+for env_path in env_paths:
+    if os.path.exists(env_path):
+        load_dotenv(env_path)
+        break
 
 # Try to import OpenAI components
 try:

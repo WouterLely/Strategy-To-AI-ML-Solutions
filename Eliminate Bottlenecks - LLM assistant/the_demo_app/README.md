@@ -81,7 +81,6 @@ TechAdvance-Solutions/
 
 ### 📥 Download and Setup
 
-<<<<<<< HEAD
 #### Option 1: Automated Setup (Recommended)
 ```powershell
 # 1. Clone the repository
@@ -133,37 +132,6 @@ For manual setup:
 - Your API key is stored locally in `.venv/` (not committed to Git)
 - Never share your API key publicly
 - The repository does **NOT** include any API keys
-=======
-#### 1. Clone the Repository
-```powershell
-git clone https://github.com/yourusername/TechAdvance-Solutions.git
-cd TechAdvance-Solutions
-```
-
-#### 2. Create Virtual Environment
-```powershell
-   python -m venv .venv
-```
-
-#### 3. Activate Virtual Environment
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-#### 4. Install Dependencies
-```powershell
-python -m pip install -r requirements.txt
-```
-
-#### 5. Set Up OpenAI API Key (Recommended)
-The startup scripts will automatically create a `.env` template file for you. You must:
-1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
-2. Create your own API key
-3. Add credits to your OpenAI account ($5-10 minimum recommended)
-4. Edit the `.env` file and replace `your_openai_api_key_here` with your actual API key
-
-**⚠️ Important**: The repository does **NOT** include any OpenAI API keys. All keys must be provided by the user.
->>>>>>> 90fd3198baf6326b2fee62bdd5459fd732dfde2c
 
 #### 6. Initialize Database
 ```powershell
