@@ -81,35 +81,64 @@ TechAdvance-Solutions/
 
 ### 📥 Download and Setup
 
-#### 1. Clone the Repository
+#### Option 1: Automated Setup (Recommended)
 ```powershell
+# 1. Clone the repository
 git clone https://github.com/yourusername/TechAdvance-Solutions.git
 cd TechAdvance-Solutions
+
+# 2. Run the automated setup script
+.\start_app.ps1
 ```
 
-#### 2. Create Virtual Environment
-```powershell
-   python -m venv .venv
-```
+The script will automatically:
+- ✅ Create and activate a virtual environment
+- ✅ Install all dependencies
+- ✅ Prompt for your OpenAI API key (securely stored in `.venv/`)
+- ✅ Create the database
+- ✅ Launch the application
 
-#### 3. Activate Virtual Environment
+#### Option 2: Manual Setup
 ```powershell
-.venv\Scripts\Activate.ps1
-```
+# 1. Clone the repository
+git clone https://github.com/yourusername/TechAdvance-Solutions.git
+cd TechAdvance-Solutions
 
-#### 4. Install Dependencies
-```powershell
+# 2. Create virtual environment
+python -m venv .venv
+
+# 3. Activate virtual environment
+.\.venv\Scripts\Activate.ps1
+
+# 4. Install dependencies
 python -m pip install -r requirements.txt
+
+# 5. Create database
+python scripts/create_database.py
+
+# 6. Start the application
+streamlit run app/enterprise_app.py
 ```
 
-#### 5. Set Up OpenAI API Key (Recommended)
-The startup scripts will automatically create a `.env` template file for you. You must:
-1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
-2. Create your own API key
-3. Add credits to your OpenAI account ($5-10 minimum recommended)
-4. Edit the `.env` file and replace `your_openai_api_key_here` with your actual API key
+### 🔑 OpenAI API Key Setup
+**The automated script will guide you through this process interactively.**
 
-**⚠️ Important**: The repository does **NOT** include any OpenAI API keys. All keys must be provided by the user.
+For manual setup:
+1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Create your API key (requires account with credits)
+3. Create a `.env` file in the project root with your credentials:
+
+```env
+# .env file example (create this in your project root)
+OPENAI_API_KEY=sk-proj-your-actual-api-key-here
+OPENAI_MODEL=gpt-3.5-turbo
+```
+
+**⚠️ Security**: 
+- Your API key is stored locally in `.env` or `.venv/` (not committed to Git)
+- Never share your API key publicly
+- The repository does **NOT** include any API keys
+- The `.env` file is automatically ignored by Git (see `.gitignore`)
 
 #### 6. Initialize Database
 ```powershell

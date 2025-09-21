@@ -1,33 +1,33 @@
 # TechAdvance Solutions - PowerShell Startup Script
 # Automatically sets up environment and starts the application
 
-Write-Host "🌟 TechAdvance Solutions - Automated Startup" -ForegroundColor Cyan
-Write-Host "=" * 50 -ForegroundColor Cyan
+Write-Host "TechAdvance Solutions - Automated Startup" -ForegroundColor Cyan
+Write-Host "================================================" -ForegroundColor Cyan
 
 # Check if virtual environment exists
 if (!(Test-Path ".venv")) {
-    Write-Host "🔧 Creating virtual environment..." -ForegroundColor Yellow
+    Write-Host "Creating virtual environment..." -ForegroundColor Yellow
     python -m venv .venv
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "❌ Failed to create virtual environment" -ForegroundColor Red
+        Write-Host "Failed to create virtual environment" -ForegroundColor Red
         exit 1
     }
 }
 
 # Activate virtual environment
-Write-Host "🔌 Activating virtual environment..." -ForegroundColor Green
+Write-Host "Activating virtual environment..." -ForegroundColor Green
 & ".venv\Scripts\Activate.ps1"
 
 # Install dependencies
-Write-Host "📦 Installing dependencies..." -ForegroundColor Green
+Write-Host "Installing dependencies..." -ForegroundColor Green
 python -m pip install -r requirements.txt --quiet
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "❌ Failed to install dependencies" -ForegroundColor Red
+    Write-Host "Failed to install dependencies" -ForegroundColor Red
     exit 1
 }
 
 # OpenAI Configuration Setup
-Write-Host "🤖 Checking OpenAI Configuration..." -ForegroundColor Cyan
+Write-Host "Checking OpenAI Configuration..." -ForegroundColor Cyan
 
 # Check for OpenAI credentials in .venv directory (secure local storage)
 $venvConfigFile = ".venv\openai_config.txt"
@@ -36,10 +36,10 @@ $envFile = ".env"
 # Function to prompt for OpenAI credentials
 function Get-OpenAICredentials {
     Write-Host ""
-    Write-Host "🔑 OpenAI API Setup Required" -ForegroundColor Yellow
-    Write-Host "=" * 40 -ForegroundColor Yellow
+    Write-Host "OpenAI API Setup Required" -ForegroundColor Yellow
+    Write-Host "========================================" -ForegroundColor Yellow
     Write-Host "To use OpenAI GPT for intelligent responses, you need an API key." -ForegroundColor White
-    Write-Host "🔗 Get your API key from: https://platform.openai.com/api-keys" -ForegroundColor Cyan
+    Write-Host "Get your API key from: https://platform.openai.com/api-keys" -ForegroundColor Cyan
     Write-Host ""
     
     # Prompt for API key
@@ -48,7 +48,7 @@ function Get-OpenAICredentials {
         if ($apiKey -and $apiKey.StartsWith("sk-") -and $apiKey.Length -gt 20) {
             break
         } else {
-            Write-Host "❌ Invalid API key format. Please enter a valid OpenAI API key." -ForegroundColor Red
+            Write-Host "Invalid API key format. Please enter a valid OpenAI API key." -ForegroundColor Red
         }
     } while ($true)
     
@@ -59,7 +59,7 @@ function Get-OpenAICredentials {
     Write-Host "2. gpt-4 (more capable, higher cost)" -ForegroundColor Gray
     Write-Host "3. gpt-4-turbo (latest, balanced)" -ForegroundColor Gray
     
-    $modelChoice = Read-Host "Choose model (1-3, or press Enter for gpt-3.5-turbo)"
+    $modelChoice = Read-Host "Choose model (1-3, or press Enter for default)"
     
     switch ($modelChoice) {
         "2" { $model = "gpt-4" }
@@ -75,7 +75,7 @@ function Get-OpenAICredentials {
 
 # Check if credentials exist in .venv (preferred method)
 if (Test-Path $venvConfigFile) {
-    Write-Host "✅ Found OpenAI config in .venv directory" -ForegroundColor Green
+    Write-Host "Found OpenAI config in .venv directory" -ForegroundColor Green
     $configContent = Get-Content $venvConfigFile
     $apiKey = ($configContent | Where-Object { $_ -like "OPENAI_API_KEY=*" }) -replace "OPENAI_API_KEY=", ""
     $model = ($configContent | Where-Object { $_ -like "OPENAI_MODEL=*" }) -replace "OPENAI_MODEL=", ""
@@ -89,13 +89,13 @@ elseif (Test-Path $envFile) {
     $model = ($envContent | Where-Object { $_ -like "OPENAI_MODEL=*" }) -replace "OPENAI_MODEL=", ""
     
     if ($apiKey -and $apiKey -ne "your_openai_api_key_here" -and $apiKey.StartsWith("sk-")) {
-        Write-Host "✅ Found OpenAI config in .env file" -ForegroundColor Green
+        Write-Host "Found OpenAI config in .env file" -ForegroundColor Green
         # Migrate to .venv for better security
         @"
 OPENAI_API_KEY=$apiKey
 OPENAI_MODEL=$model
 "@ | Out-File -FilePath $venvConfigFile -Encoding UTF8
-        Write-Host "🔄 Migrated config to .venv directory for better security" -ForegroundColor Green
+        Write-Host "Migrated config to .venv directory for better security" -ForegroundColor Green
     } else {
         $apiKey = $null
     }
@@ -113,7 +113,7 @@ OPENAI_API_KEY=$apiKey
 OPENAI_MODEL=$model
 "@ | Out-File -FilePath $venvConfigFile -Encoding UTF8
     
-    Write-Host "✅ OpenAI credentials saved securely in .venv directory" -ForegroundColor Green
+    Write-Host "OpenAI credentials saved securely in .venv directory" -ForegroundColor Green
 }
 
 # Set environment variables for the current session
@@ -122,7 +122,7 @@ $env:OPENAI_MODEL = $model
 [System.Environment]::SetEnvironmentVariable('OPENAI_API_KEY', $apiKey, 'Process')
 [System.Environment]::SetEnvironmentVariable('OPENAI_MODEL', $model, 'Process')
 
-Write-Host "🤖 OpenAI configured: $model" -ForegroundColor Green
+Write-Host "OpenAI configured: $model" -ForegroundColor Green
 
 # Create or update .env file for compatibility
 @"
@@ -135,22 +135,25 @@ OPENAI_MODEL=$model
 
 # Check if database exists, create if it doesn't
 if (!(Test-Path "data\database\company.db")) {
-    Write-Host "🔧 Creating database..." -ForegroundColor Yellow
+    Write-Host "Creating database..." -ForegroundColor Yellow
     python scripts/create_database.py
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "✅ Database created successfully!" -ForegroundColor Green
+        Write-Host "Database created successfully!" -ForegroundColor Green
     } else {
-        Write-Host "❌ Database creation failed" -ForegroundColor Red
+        Write-Host "Database creation failed" -ForegroundColor Red
         exit 1
     }
 } else {
-    Write-Host "✅ Database already exists" -ForegroundColor Green
+    Write-Host "Database already exists" -ForegroundColor Green
 }
 
 # Start the application
-Write-Host "🚀 Starting TechAdvance Solutions platform..." -ForegroundColor Cyan
-Write-Host "📍 Application will be available at: http://localhost:8501" -ForegroundColor Yellow
-Write-Host "🤖 OpenAI GPT integration enabled" -ForegroundColor Green
+Write-Host "Starting TechAdvance Solutions platform..." -ForegroundColor Cyan
+Write-Host "Application will be available at: http://localhost:8501" -ForegroundColor Yellow
+Write-Host "OpenAI GPT integration enabled" -ForegroundColor Green
 Write-Host ""
 
 streamlit run app/enterprise_app.py
+
+
+
