@@ -7,7 +7,6 @@ Complexity isn’t the enemy — unmanaged complexity is. This repository is my 
 Here, you won’t find corporate IP or production code. Instead, you’ll discover real stories, patterns, and use cases that show how AI/ML can be woven into business strategy — turning the invisible into the actionable.
 
 ✨ What you’ll find here
-- To be researched: 🪄 LLM Alchemy → How MCP server & LLM's models transform strategic intent into tangible outcomes.
 - 🔮 Predictive Magic → Case examples where ML reveals hidden patterns, guiding simple and strategic actions.
 - ⚡ Applied Simplicity → Frameworks and approaches that break down complexity into solutions teams can actually adopt.
 
