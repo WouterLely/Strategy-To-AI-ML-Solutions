@@ -1,4 +1,4 @@
-### 1. Human-Friendly Metrics Cheat Sheet
+### Human-Friendly Metrics Cheat Sheet
 A single table summarizing some popular AI-ML metrics, their meaning, when to use them, and how to interpret results.
 
 ---
